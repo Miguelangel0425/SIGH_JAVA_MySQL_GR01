@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" version="6.1">
+    <session-config>
+        <session-timeout>20</session-timeout>
+        <cookie-config>
+            <name>SighSesion</name>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Vistas servidas por el controlador</web-resource-name>
+            <url-pattern>/frmlogin.jsp</url-pattern>
+            <url-pattern>/frminicio.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+</web-app>
