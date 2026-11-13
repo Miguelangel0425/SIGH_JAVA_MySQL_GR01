@@ -49,7 +49,7 @@
                         <tbody>
                             <c:forEach var="item" items="${cargos}">
                                 <tr>
-                                    <th scope="row"><c:out value="${item.codigo}" /></th>
+                                    <th scope="row"><c:out value="${item.departamento}${item.codigo}" /></th>
                                     <td><c:out value="${item.descripcion}" default="—" /></td>
                                     <td><c:out value="${item.departamento}" /> <c:out value="${item.departamentoDescripcion}" /></td>
                                     <td class="gestion-acciones">
