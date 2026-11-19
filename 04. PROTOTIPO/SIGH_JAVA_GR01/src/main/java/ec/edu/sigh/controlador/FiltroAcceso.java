@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 // Protege los módulos: sin sesión válida se redirige al login.
-@WebFilter({"/departamentos", "/cargos"})
+@WebFilter({"/departamentos", "/cargos", "/foto", "/persona", "/reporte"})
 public final class FiltroAcceso implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain cadena)

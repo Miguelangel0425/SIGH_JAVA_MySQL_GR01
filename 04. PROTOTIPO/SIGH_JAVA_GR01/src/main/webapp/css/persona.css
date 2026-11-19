@@ -1,0 +1,103 @@
+.ficha-cuerpo { padding: clamp(20px, 4vw, 38px); }
+.ficha-cuerpo > section + section, .ficha-cuerpo form + section { margin-top: 28px; }
+
+.aviso { margin: 0 0 15px; padding: 10px 12px; border-radius: 8px; background: #dff1ec; color: #205746; font-size: .87rem; font-weight: 700; }
+
+.ficha-cabecera {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 24px;
+    align-items: start;
+    padding: 20px;
+    border: 1px solid #d6e5e4;
+    border-radius: 11px;
+    background: #f0f6f5;
+}
+
+.ficha-campos input[readonly] { background: #e7efee; font-weight: 700; }
+.ficha-foto { display: grid; gap: 10px; font-size: .78rem; color: #496360; }
+.ficha-foto img { width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; border: 1px solid #bacfc8; border-radius: 11px; background: #dbe7e6; }
+.ficha-foto input[type="file"] { width: 100%; margin-top: 6px; font-size: .78rem; }
+
+.ficha-principal { display: grid; grid-template-columns: minmax(0, 1fr) 52px; gap: 16px; margin-top: 22px; align-items: start; }
+
+.pestanas { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid #d6e5e4; }
+.pestanas button {
+    padding: 11px 18px;
+    border: 1px solid #d6e5e4;
+    border-bottom: 0;
+    border-radius: 9px 9px 0 0;
+    background: #e7f2f1;
+    color: #254943;
+    font: 700 .88rem "Segoe UI", system-ui, sans-serif;
+    cursor: pointer;
+}
+.pestanas button[aria-selected="true"] { background: var(--turquesa); color: #fff; border-color: var(--turquesa); }
+.pestanas button:focus-visible { outline: 2px solid #6b448a; outline-offset: -2px; }
+
+.panel-pestana {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px 20px;
+    padding: 22px;
+    border: 1px solid #d6e5e4;
+    border-radius: 0 0 11px 11px;
+    background: #fff;
+}
+.pestanas[hidden] + .panel-pestana, .panel-pestana:first-child { border-radius: 11px; }
+.panel-pestana[hidden] { display: none; }
+.panel-pestana .campo + .campo { margin-top: 0; }
+.campo-ancho { grid-column: 1 / -1; }
+.campo-marca label { display: flex; align-items: center; gap: 9px; margin-top: 30px; font-weight: 600; }
+.campo-marca input { width: auto; min-height: 0; }
+
+.ficha-nav { display: grid; gap: 8px; margin-top: 46px; }
+.ficha-nav a {
+    display: grid;
+    place-items: center;
+    height: 44px;
+    border: 1px solid #bacfc8;
+    border-radius: 9px;
+    background: #fff;
+    color: var(--turquesa);
+    text-decoration: none;
+    font-size: 1rem;
+}
+.ficha-nav a:hover { background: #e7f2f1; }
+
+.botonera { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.botonera .accion { width: auto; min-width: 7.5rem; margin: 0; justify-content: center; text-decoration: none; }
+.accion-secundaria { background: #fff; color: var(--turquesa); border: 1px solid var(--turquesa); box-shadow: none; }
+.accion-secundaria:hover { background: #e7f2f1; }
+.solo-imprimir { display: none; }
+
+@media (max-width: 720px) {
+    .ficha-cabecera { grid-template-columns: minmax(0, 1fr); }
+    .ficha-foto { max-width: 190px; }
+    .ficha-principal { grid-template-columns: minmax(0, 1fr); }
+    .ficha-nav { grid-template-columns: repeat(4, 1fr); margin-top: 0; }
+    .panel-pestana { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Impresión: ficha limpia con todos los datos, sin botones ni pestañas */
+@media print {
+    :root { background: #fff; }
+    body { display: block; padding: 0; background: #fff; }
+    .gestion { border: 0; border-radius: 0; box-shadow: none; background: #fff; width: 100%; }
+    .gestion-cabecera { background: #fff; padding: 0 0 12px; }
+    .gestion-cabecera h1 { font-size: 1.6rem; }
+    .no-imprimir { display: none !important; }
+    .solo-imprimir { display: block; margin: 0 0 12px; font-size: 1rem; grid-column: 1 / -1; }
+    .ficha-cuerpo { padding: 12px 0 0; }
+    .ficha-cabecera { background: #fff; border-color: #999; }
+    .ficha-principal { display: block; margin-top: 16px; }
+    .panel-pestana, .panel-pestana[hidden] { display: grid !important; margin-bottom: 14px; border: 1px solid #999; border-radius: 8px; break-inside: avoid; }
+    .campo :is(input:not([type="checkbox"]), select) { border-color: #999; background: #fff; min-height: 0; padding: 6px 8px; appearance: none; }
+    select { background-image: none; }
+}
+
+.pestanas[hidden], .accion[hidden] { display: none; }
+
+/* Formulario bloqueado */
+.ficha :disabled { background: #e7efee; color: #6b7f7b; cursor: not-allowed; }
+.accion:disabled { opacity: .55; box-shadow: none; }

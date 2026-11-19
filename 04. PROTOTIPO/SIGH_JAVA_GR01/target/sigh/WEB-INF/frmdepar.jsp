@@ -20,6 +20,8 @@
             <div class="gestion-acciones">
                 <a class="enlace-personal" href="${base}/inicio">Inicio</a>
                 <a class="enlace-personal" href="${base}/cargos">Cargos</a>
+                <a class="enlace-personal" href="${base}/persona">Personas</a>
+                <a class="enlace-personal" href="${base}/reporte?r=departamentos" target="_blank" rel="noopener">Reporte PDF</a>
                 <form action="${base}/salir" method="post">
                     <input type="hidden" name="token" value="${token}">
                     <button class="accion" type="submit">Cerrar sesión</button>
